@@ -1,0 +1,19 @@
+{
+  "name": "baby-blockchain",
+  "version": "1.0.0",
+  "description": "certificates Manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marenga14/BabyBlockchain-.git"
+  },
+  "author": "marenga julius",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/marenga14/BabyBlockchain-/issues"
+  },
+  "homepage": "https://github.com/marenga14/BabyBlockchain-#readme"
+}

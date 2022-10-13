@@ -17,7 +17,7 @@ also store them in the blockchain to protect them tempering;
  ```
 
 ### Potential of the product
-The cerificate Management syestem has potential 
+The cerificate Management can be used with the `Digital Identity system` to verify the documents and attachements before issuing the identities to people.
 
 
 ### Users of the system

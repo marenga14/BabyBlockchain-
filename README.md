@@ -1,9 +1,9 @@
 
 # Certificate management System `(CMS)`
 
-## Overview
-Create the blockchain system that will be used to issue the certificates from issuers with intergrity, 
-also store them in the blockchain to protect them tempering;
+### Overview
+This is the  small version of  blockchain  created to be used to issue the certificates from verified issuers with intergrity, 
+write their references in the blockchain to protect them from tempering.
 
 
 

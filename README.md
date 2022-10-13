@@ -1,7 +1,7 @@
 # BabyBlockchain
-## Certificate management System
+## Certificate management System `(CMS)`
 
-### Overviewm 
+### Overview
 Create the blockchain system that will be used to issue the certificates from issuers with intergrity, 
 also store them in the blockchain to protect them tempering;
 
@@ -30,3 +30,7 @@ The cerificate Management can be used with the `Digital Identity system` to veri
       
  > The Receiver ( owner ) of the document, has the the mandate to decript the document using the private key and own the document.
  > Verifier, any one who wants to verify the intergrity of the document from the digital signature.
+
+### Security concerns 
+
+The important security concern is about the `issuers`, hence all the issuers are only authorised one with authorised addresses that will be pre-registered initially before everything starts.

@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/marenga14/BabyBlockchain-/issues"
   },
-  "homepage": "https://github.com/marenga14/BabyBlockchain-#readme"
+  "homepage": "https://github.com/marenga14/BabyBlockchain-#readme",
+  "dependencies": {
+    "jws": "^4.0.0"
+  }
 }

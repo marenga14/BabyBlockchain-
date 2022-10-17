@@ -1,11 +1,12 @@
 let  {privateKey,publicKey}  = require("./keyPair.js")
 
 let jws = require ("jws");
+//test message
 let message =" We did everything with the Almighty"
 // message = Buffer.from(message,"base64")
 
 
-
+//sign data
 function signData (message, privateKey){
    return  jws.createSign({
         header:{alg:'HS256'},
@@ -21,7 +22,7 @@ function signData (message, privateKey){
 
 
 let sigMessage = signData (message,privateKey)
-//console.log(sigMessage)
+//verifying the verification
 function verifyData ( sigMessage,publicKey){
     
     return jws.createVerify({
@@ -39,4 +40,5 @@ function verifyData ( sigMessage,publicKey){
 
 }
 
+//teesting the verifying function
 verifyData(sigMessage,publicKey)

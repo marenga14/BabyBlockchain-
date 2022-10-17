@@ -13,18 +13,15 @@ const keyPair={
     publicKey:""
 }
 
-function generateKey(){
+ exports.generateKey = () =>{
     keyPair.privateKey = diffHell.getPrivateKey('hex');
     keyPair.publicKey = diffHell.getPublicKey('hex')
 
+    return keyPair;
+
 }
 
 
-function printKey () {
-generateKey ()
-    
-}
+ 
 
- printKey ()
-
- module.exports = keyPair;
+ 

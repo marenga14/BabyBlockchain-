@@ -1,4 +1,8 @@
-let  {privateKey,publicKey}  = require("./keyPair.js")
+let  keyGen  = require("./keyPair.js")
+let keyPair = keyGen.generateKey();
+let publicKey = keyPair.publicKey
+let privateKey = keyPair.privateKey
+ let signature ={}
 
 let jws = require ("jws");
 //test message
@@ -7,7 +11,7 @@ let message =" We did everything with the Almighty"
 
 
 //sign data
-function signData (message, privateKey){
+signature.signData = (message, privateKey)=>{
    return  jws.createSign({
         header:{alg:'HS256'},
         privateKey:privateKey,
@@ -23,7 +27,7 @@ function signData (message, privateKey){
 
 let sigMessage = signData (message,privateKey)
 //verifying the verification
-function verifyData ( sigMessage,publicKey){
+ signature.verifyData = ( sigMessage,publicKey)=>{
     
     return jws.createVerify({
         
@@ -42,3 +46,6 @@ function verifyData ( sigMessage,publicKey){
 
 //teesting the verifying function
 verifyData(sigMessage,publicKey)
+
+
+module.exports = signature;

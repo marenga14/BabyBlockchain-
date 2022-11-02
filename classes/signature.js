@@ -44,7 +44,7 @@ let sigMessage = signData (message,privateKey)
 
 }
 
-//teesting the verifying function
+//testing the verifying function
 verifyData(sigMessage,publicKey)
 
 

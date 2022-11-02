@@ -10,10 +10,11 @@
 
 
 let signature = require ("./signature.js")
+let account = require ("./Account.js")
  
 
 
-/* *************************   STAGE 4     ****************************************** */
+/* *************   STAGE 4     ****************************************** */
  /*operation class*/
 class operation {
     constructor(_sender, _receiver, _ammount, _signature) {
@@ -23,9 +24,10 @@ class operation {
         this.signature = _signature;
     }
     
-    
+    setOfOperation = []
     createOperation(_sender,_receiver,_ammount,_signature){
         let operation = new operation(_sender,_receiver,_ammount,_signature)
+        this.setOfOperation.push (operation)
         return operation;
     }
     
@@ -62,11 +64,12 @@ class transaction {
             this.transactionId = toHash1(_setOperation);
         }
 
-        // setOfOperation =[]
+        setOfTransactions =[]
          createTransaction (_setOps,nonce) {
             // let newOp = operation.createOperation()
             // this.setOfOperation.push(newOp)
             let newTx = new transaction (_setOps,nonce);
+            this.setOfTransactions.push(newTx)
             return newTx;
         
         }
@@ -106,13 +109,13 @@ function toHash1 (data){
 /* **** block class  ******* */
 
 class block {
-    constructor(_prevHash) { 
+    constructor(_setTxs,_prevHash) { 
        
         this.setOfTransactions = _setTxs;
         this.prevHash=_prevHash;
         this.blockId =toHash1(_setTxs);
     }
- setOfTransactions = [];
+    //   setOfTransactions = transaction.setOfTransactions;
 
     createBlock (_setOfTxs,_prevHash){
         let newBlock = new block (_setOfTxs,_prevHash)
@@ -156,7 +159,46 @@ class blockchain {
 
     }
 
-    validateBlock (){
+    validateBlock (newBlock){
+
+        //check the previous hash value ( prevHash)
+        let isPrevHash = false;
+        if(this.blockHistory [this.blockHistory.length-1].blockId == newBlock.prevHash){
+
+         isPrevHash = true;
+
+        }
+
+
+        // check if the tx isn't added to the history
+        let isnotAddedToHistory = false
+        transaction.setOfTransactions.foreEach (tx=>{
+            if(newBlock.setOfTransactions != tx){
+                isnotAddedToHistory = true;
+            }
+        })
+       
+
+        // check operations in the transaction and return false for anyexisting invalid but continues if all are valid.
+
+        
+        let transactions = newBlock.setOfTransactions;
+
+        transactions.foreEach(tx=>{
+            let operations = tx.setOfOperation;
+            operations.foreEach(op=>{
+                if(!operation.verifyOperation(op)){
+                    return false
+                }
+            })
+        })
+
+// conclusion where true is returned for valid block and viceversa
+        if (isPrevHash && isnotAddedToHistory ){
+            return true
+        }
+
+        return false
 
     }
 }
